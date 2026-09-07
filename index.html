@@ -200,6 +200,24 @@ footer {
     <div class="result" id="ciResult">
         Your result will appear here.
     </div>
+<!-- Marks Calculator -->
+<div class="card">
+    <h2>🎓 Marks Calculator</h2>
+
+    <input type="number" id="mark1" placeholder="Subject 1 Marks">
+    <input type="number" id="mark2" placeholder="Subject 2 Marks">
+    <input type="number" id="mark3" placeholder="Subject 3 Marks">
+    <input type="number" id="mark4" placeholder="Subject 4 Marks">
+    <input type="number" id="mark5" placeholder="Subject 5 Marks">
+
+    <button id="marksBtn">
+        Calculate Marks
+    </button>
+
+    <div class="result" id="marksResult">
+        Your result will appear here.
+    </div>
+</div>
 </div>
 </div>
 </div>
@@ -356,6 +374,40 @@ document.getElementById("ciBtn").addEventListener("click", function () {
         "Compound Interest: ₹" + interest.toFixed(2) +
         "<br>Total Amount: ₹" + amount.toFixed(2);
 });
+document.getElementById("marksBtn").addEventListener("click", function () {
+
+    const marks = [
+        Number(document.getElementById("mark1").value),
+        Number(document.getElementById("mark2").value),
+        Number(document.getElementById("mark3").value),
+        Number(document.getElementById("mark4").value),
+        Number(document.getElementById("mark5").value)
+    ];
+
+    const result = document.getElementById("marksResult");
+
+    if (marks.some(function(mark) {
+        return mark < 0 || mark > 100;
+    })) {
+        result.textContent = "Please enter marks between 0 and 100.";
+        return;
+    }
+
+    const total = marks.reduce(function(a, b) {
+        return a + b;
+    }, 0);
+
+    const percentage = total / 5;
+
+    const passed = marks.every(function(mark) {
+        return mark >= 33;
+    });
+
+    result.innerHTML =
+        "Total Marks: " + total + " / 500" +
+        "<br>Percentage: " + percentage.toFixed(2) + "%" +
+        "<br>Result: " + (passed ? "PASS ✅" : "FAIL ❌");
+});    
 </script>
 
 </body>
