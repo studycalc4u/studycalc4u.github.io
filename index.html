@@ -160,6 +160,27 @@ footer {
     <div class="result" id="changeResult">
         Your result will appear here.
     </div>
+<!-- Simple Interest Calculator -->
+<div class="card">
+    <h2>💰 Simple Interest Calculator</h2>
+
+    <input type="number" id="principal"
+           placeholder="Principal Amount">
+
+    <input type="number" id="rate"
+           placeholder="Rate of Interest (%)">
+
+    <input type="number" id="time"
+           placeholder="Time (Years)">
+
+    <button id="siBtn">
+        Calculate Interest
+    </button>
+
+    <div class="result" id="siResult">
+        Your result will appear here.
+    </div>
+</div>
 </div>
 <footer>
     © 2026 StudyCalc4U
@@ -257,7 +278,34 @@ document.getElementById("changeBtn").addEventListener("click", function () {
         result.textContent = "No change: 0%";
     }
 });
-</script>
+document.getElementById("siBtn").addEventListener("click", function () {
+
+    const principal = Number(
+        document.getElementById("principal").value
+    );
+
+    const rate = Number(
+        document.getElementById("rate").value
+    );
+
+    const time = Number(
+        document.getElementById("time").value
+    );
+
+    const result = document.getElementById("siResult");
+
+    if (principal <= 0 || rate < 0 || time <= 0) {
+        result.textContent = "Please enter valid values.";
+        return;
+    }
+
+    const interest = (principal * rate * time) / 100;
+    const total = principal + interest;
+
+    result.innerHTML =
+        "Simple Interest: ₹" + interest.toFixed(2) +
+        "<br>Total Amount: ₹" + total.toFixed(2);
+});</script>
 
 </body>
 </html>
