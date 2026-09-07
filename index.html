@@ -143,7 +143,24 @@ footer {
     </div>
 
 </div>
+<!-- Percentage Increase / Decrease -->
+<div class="card">
+    <h2>📈 Percentage Increase / Decrease</h2>
 
+    <input type="number" id="oldValue"
+           placeholder="Original Value">
+
+    <input type="number" id="newValue"
+           placeholder="New Value">
+
+    <button id="changeBtn">
+        Calculate Change
+    </button>
+
+    <div class="result" id="changeResult">
+        Your result will appear here.
+    </div>
+</div>
 <footer>
     © 2026 StudyCalc4U
 </footer>
@@ -217,7 +234,29 @@ document.getElementById("cgpaBtn").addEventListener("click", function () {
     result.textContent =
         "Approx. Percentage: " + percentage.toFixed(2) + "%";
 });
+document.getElementById("changeBtn").addEventListener("click", function () {
 
+    const oldValue = Number(document.getElementById("oldValue").value);
+    const newValue = Number(document.getElementById("newValue").value);
+    const result = document.getElementById("changeResult");
+
+    if (oldValue === 0) {
+        result.textContent = "Original value cannot be 0.";
+        return;
+    }
+
+    const change = ((newValue - oldValue) / oldValue) * 100;
+
+    if (change > 0) {
+        result.textContent =
+            "Increase: " + change.toFixed(2) + "%";
+    } else if (change < 0) {
+        result.textContent =
+            "Decrease: " + Math.abs(change).toFixed(2) + "%";
+    } else {
+        result.textContent = "No change: 0%";
+    }
+});
 </script>
 
 </body>
