@@ -217,10 +217,23 @@ footer {
     <div class="result" id="marksResult">
         Your result will appear here.
     </div>
+<!-- Age Calculator -->
+<div class="card">
+    <h2>🎂 Age Calculator</h2>
+
+    <label>Date of Birth</label>
+    <input type="date" id="birthDate">
+
+    <button id="ageBtn">
+        Calculate Age
+    </button>
+
+    <div class="result" id="ageResult">
+        Your age will appear here.
+    </div>
 </div>
 </div>
-</div>
-</div>
+
 <footer>
     © 2026 StudyCalc4U
 </footer>
@@ -407,6 +420,48 @@ document.getElementById("marksBtn").addEventListener("click", function () {
         "Total Marks: " + total + " / 500" +
         "<br>Percentage: " + percentage.toFixed(2) + "%" +
         "<br>Result: " + (passed ? "PASS ✅" : "FAIL ❌");
+});    
+document.getElementById("ageBtn").addEventListener("click", function () {
+
+    const birthInput = document.getElementById("birthDate").value;
+    const result = document.getElementById("ageResult");
+
+    if (!birthInput) {
+        result.textContent = "Please select your date of birth.";
+        return;
+    }
+
+    const birthDate = new Date(birthInput + "T00:00:00");
+    const today = new Date();
+
+    if (birthDate > today) {
+        result.textContent = "Date of birth cannot be in the future.";
+        return;
+    }
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    if (days < 0) {
+        months--;
+        const previousMonth = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0
+        );
+        days += previousMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    result.innerHTML =
+        "Your Age: " + years + " years, " +
+        months + " months, " +
+        days + " days";
 });    
 </script>
 
