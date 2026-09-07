@@ -180,6 +180,27 @@ footer {
     <div class="result" id="siResult">
         Your result will appear here.
     </div>
+<!-- Compound Interest Calculator -->
+<div class="card">
+    <h2>📈 Compound Interest Calculator</h2>
+
+    <input type="number" id="ciPrincipal"
+           placeholder="Principal Amount">
+
+    <input type="number" id="ciRate"
+           placeholder="Rate of Interest (%)">
+
+    <input type="number" id="ciTime"
+           placeholder="Time (Years)">
+
+    <button id="ciBtn">
+        Calculate Compound Interest
+    </button>
+
+    <div class="result" id="ciResult">
+        Your result will appear here.
+    </div>
+</div>
 </div>
 </div>
 <footer>
@@ -304,8 +325,38 @@ document.getElementById("siBtn").addEventListener("click", function () {
 
     result.innerHTML =
         "Simple Interest: ₹" + interest.toFixed(2) +
-        "<br>Total Amount: ₹" + total.toFixed(2);
-});</script>
+        "<br>Total Amount: ₹" + total.toFixed(2);});
+document.getElementById("ciBtn").addEventListener("click", function () {
+
+    const principal = Number(
+        document.getElementById("ciPrincipal").value
+    );
+
+    const rate = Number(
+        document.getElementById("ciRate").value
+    );
+
+    const time = Number(
+        document.getElementById("ciTime").value
+    );
+
+    const result = document.getElementById("ciResult");
+
+    if (principal <= 0 || rate < 0 || time <= 0) {
+        result.textContent = "Please enter valid values.";
+        return;
+    }
+
+    const amount =
+        principal * Math.pow(1 + rate / 100, time);
+
+    const interest = amount - principal;
+
+    result.innerHTML =
+        "Compound Interest: ₹" + interest.toFixed(2) +
+        "<br>Total Amount: ₹" + amount.toFixed(2);
+});
+</script>
 
 </body>
 </html>
