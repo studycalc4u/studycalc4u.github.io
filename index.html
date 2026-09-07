@@ -1,96 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyCalc4U - Free Student Calculators</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>StudyCalc4U - Free Student Calculators</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background: #2563eb;
-            color: white;
-            padding: 25px 15px;
-            text-align: center;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+header {
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
 
-        header p {
-            margin: 8px 0 0;
-            font-size: 16px;
-        }
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 25px auto;
-            padding: 0 15px;
-        }
+header p {
+    margin: 8px 0 0;
+}
 
-        .calculator {
-            background: white;
-            padding: 22px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
+.container {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
 
-        .calculator h2 {
-            margin-top: 0;
-        }
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            font-size: 16px;
-        }
+.card h2 {
+    margin-top: 0;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            border: none;
-            border-radius: 7px;
-            background: #2563eb;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
 
-        button:hover {
-            background: #1d4ed8;
-        }
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        .result {
-            margin-top: 15px;
-            padding: 12px;
-            background: #eef4ff;
-            border-radius: 7px;
-            font-weight: bold;
-        }
+.result {
+    margin-top: 15px;
+    padding: 12px;
+    background: #eef4ff;
+    border-radius: 7px;
+    font-weight: bold;
+    min-height: 45px;
+}
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #666;
-        }
-    </style>
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+}
+</style>
 </head>
 
 <body>
@@ -102,49 +99,43 @@
 
 <div class="container">
 
-    <div class="calculator">
+    <!-- Percentage -->
+    <div class="card">
         <h2>📊 Percentage Calculator</h2>
 
         <input type="number" id="obtained" placeholder="Obtained Marks">
 
         <input type="number" id="total" placeholder="Total Marks">
 
-        <button onclick="calculatePercentage()">
-            Calculate Percentage
-        </button>
+        <button id="percentageBtn">Calculate Percentage</button>
 
         <div class="result" id="percentageResult">
             Your result will appear here.
         </div>
     </div>
 
-
-    <div class="calculator">
+    <!-- Average -->
+    <div class="card">
         <h2>➗ Average Calculator</h2>
 
         <input type="text" id="numbers"
-               placeholder="Example: 70, 80, 90">
+        placeholder="Example: 70, 80, 90">
 
-        <button onclick="calculateAverage()">
-            Calculate Average
-        </button>
+        <button id="averageBtn">Calculate Average</button>
 
         <div class="result" id="averageResult">
             Your result will appear here.
         </div>
     </div>
 
-
-    <div class="calculator">
+    <!-- CGPA -->
+    <div class="card">
         <h2>🎓 CGPA to Percentage</h2>
 
         <input type="number" step="0.01"
-               id="cgpa"
-               placeholder="Enter CGPA">
+        id="cgpa" placeholder="Enter CGPA">
 
-        <button onclick="calculateCGPA()">
-            Convert
-        </button>
+        <button id="cgpaBtn">Convert</button>
 
         <div class="result" id="cgpaResult">
             Your result will appear here.
@@ -154,63 +145,80 @@
 </div>
 
 <footer>
-    © 2026 StudyCalc4U | Free Student Tools
+    © 2026 StudyCalc4U
 </footer>
-
 
 <script>
 
-function calculatePercentage() {
+document.getElementById("percentageBtn").addEventListener("click", function () {
 
-    let obtained =
-        Number(document.getElementById("obtained").value);
+    const obtained = Number(document.getElementById("obtained").value);
+    const total = Number(document.getElementById("total").value);
 
-    let total =
-        Number(document.getElementById("total").value);
+    const result = document.getElementById("percentageResult");
 
-    if (total <= 0) {
-        document.getElementById("percentageResult").innerText =
-            "Please enter a valid total.";
+    if (total <= 0 || obtained < 0) {
+        result.textContent = "Please enter valid marks.";
         return;
     }
 
-    let percentage = (obtained / total) * 100;
+    const percentage = (obtained / total) * 100;
 
-    document.getElementById("percentageResult").innerText =
-        "Your Percentage: " + percentage.toFixed(2) + "%";
-}
+    result.textContent = "Your Percentage: " + percentage.toFixed(2) + "%";
+});
 
 
-function calculateAverage() {
+document.getElementById("averageBtn").addEventListener("click", function () {
 
-    let input =
-        document.getElementById("numbers").value;
+    const input = document.getElementById("numbers").value.trim();
+    const result = document.getElementById("averageResult");
 
-    let numbers =
-        input.split(",").map(Number).filter(n => !isNaN(n));
+    if (input === "") {
+        result.textContent = "Please enter some numbers.";
+        return;
+    }
+
+    const numbers = input
+        .split(",")
+        .map(Number)
+        .filter(function (n) {
+            return !isNaN(n);
+        });
 
     if (numbers.length === 0) {
-        document.getElementById("averageResult").innerText =
-            "Please enter numbers separated by commas.";
+        result.textContent = "Please enter valid numbers.";
         return;
     }
 
-    let sum =
-        numbers.reduce((a, b) => a + b, 0);
+    let sum = 0;
 
-    let average =
-        sum / numbers.length;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
 
-    document.getElementById("averageResult").innerText =
-        "Average: " + average.toFixed(2);
-}
+    const average = sum / numbers.length;
+
+    result.textContent = "Average: " + average.toFixed(2);
+});
 
 
-function calculateCGPA() {
+document.getElementById("cgpaBtn").addEventListener("click", function () {
 
-    let cgpa =
-        Number(document.getElementById("cgpa").value);
+    const cgpa = Number(document.getElementById("cgpa").value);
+    const result = document.getElementById("cgpaResult");
 
-    if (cgpa <= 0) {
-        document.getElementById("cgpaResult").innerText =
-            "Please enter a valid
+    if (cgpa <= 0 || cgpa > 10) {
+        result.textContent = "Please enter CGPA between 0 and 10.";
+        return;
+    }
+
+    const percentage = cgpa * 9.5;
+
+    result.textContent =
+        "Approx. Percentage: " + percentage.toFixed(2) + "%";
+});
+
+</script>
+
+</body>
+</html>
