@@ -73,6 +73,16 @@ button {
     font-weight: bold;
 }
 
+    select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+    background: white;
+}
+    
 .result {
     margin-top: 15px;
     padding: 12px;
@@ -230,6 +240,30 @@ footer {
 
     <div class="result" id="ageResult">
         Your age will appear here.
+    </div>
+    <!-- Unit Converter -->
+<div class="card">
+    <h2>📏 Unit Converter</h2>
+
+    <input type="number" id="unitValue" placeholder="Enter value">
+
+    <select id="unitType">
+        <option value="km-miles">Kilometres → Miles</option>
+        <option value="miles-km">Miles → Kilometres</option>
+        <option value="kg-lb">Kilograms → Pounds</option>
+        <option value="lb-kg">Pounds → Kilograms</option>
+        <option value="m-cm">Metres → Centimetres</option>
+        <option value="cm-m">Centimetres → Metres</option>
+        <option value="feet-m">Feet → Metres</option>
+        <option value="m-feet">Metres → Feet</option>
+    </select>
+
+    <button id="unitBtn">
+        Convert
+    </button>
+
+    <div class="result" id="unitResult">
+        Your result will appear here.
     </div>
 </div>
 </div>
@@ -462,7 +496,66 @@ document.getElementById("ageBtn").addEventListener("click", function () {
         "Your Age: " + years + " years, " +
         months + " months, " +
         days + " days";
-});    
+});  
+ document.getElementById("unitBtn").addEventListener("click", function () {
+
+    const value = Number(document.getElementById("unitValue").value);
+    const type = document.getElementById("unitType").value;
+    const result = document.getElementById("unitResult");
+
+    if (isNaN(value)) {
+        result.textContent = "Please enter a valid number.";
+        return;
+    }
+
+    let answer;
+    let unit;
+
+    switch (type) {
+
+        case "km-miles":
+            answer = value * 0.621371;
+            unit = "miles";
+            break;
+
+        case "miles-km":
+            answer = value * 1.609344;
+            unit = "km";
+            break;
+
+        case "kg-lb":
+            answer = value * 2.20462262;
+            unit = "lb";
+            break;
+
+        case "lb-kg":
+            answer = value * 0.45359237;
+            unit = "kg";
+            break;
+
+        case "m-cm":
+            answer = value * 100;
+            unit = "cm";
+            break;
+
+        case "cm-m":
+            answer = value / 100;
+            unit = "m";
+            break;
+
+        case "feet-m":
+            answer = value * 0.3048;
+            unit = "m";
+            break;
+
+        case "m-feet":
+            answer = value * 3.28084;
+            unit = "feet";
+            break;
+    }
+
+    result.textContent = "Result: " + answer.toFixed(4) + " " + unit;
+});   
 </script>
 
 </body>
