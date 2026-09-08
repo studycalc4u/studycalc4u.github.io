@@ -33,7 +33,38 @@ header {
         <a href="#contact">Contact</a>
     </div>
 </nav>
+.navbar {
+    background: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
+.nav-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
 header h1 {
     margin: 0;
     font-size: 32px;
