@@ -295,6 +295,19 @@ footer {
     opacity: 0.7;
     margin-bottom: 0;
 }
+.email-btn {
+    display: inline-block;
+    padding: 11px 18px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.email-btn:hover {
+    opacity: 0.9;
+}
 </style>
 </head>
 
@@ -526,13 +539,18 @@ footer {
     </p>
 </div>
 
-<div class="card" id="contact">
-    <h2>📩 Contact</h2>
+ <div class="card" id="contact">
+    <h2>📩 Contact StudyCalc4U</h2>
+
     <p>
-        Have a suggestion or found a problem?
-        You can contact the StudyCalc4U team.
+        Have a suggestion, feedback, or found a problem?
+        We'd love to hear from you.
     </p>
-</div>
+
+    <a href="mailto:studycalc4u@gmail.com" class="email-btn">
+        📧 Email Us
+    </a>
+ </div>   
 <button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     ↑ Back to Top
 </button>    
