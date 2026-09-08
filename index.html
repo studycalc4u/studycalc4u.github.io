@@ -211,6 +211,13 @@ header p {
     padding: 10px 18px;
     background: #2563eb;
 }    
+.search-box {
+    grid-column: 1 / -1;
+}
+
+.search-box input {
+    margin: 0;
+}    
 </style>
 </head>
 
@@ -239,6 +246,9 @@ header p {
         <h2>🧮 Student Calculators</h2>
         <p>Quick and easy tools for everyday calculations.</p>
     </div>
+      <div class="search-box">
+    <input type="text" id="calculatorSearch" placeholder="🔎 Search calculator...">
+        </div>
 
     <!-- Percentage Calculator -->
     <div class="card">
@@ -716,7 +726,25 @@ document.getElementById("ageBtn").addEventListener("click", function () {
     }
 
     result.textContent = "Result: " + answer.toFixed(4) + " " + unit;
-});   
+});   document.getElementById("calculatorSearch").addEventListener("input", function () {
+
+    const search = this.value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(function (card) {
+
+        if (card.id === "about" || card.id === "contact") return;
+
+        const text = card.textContent.toLowerCase();
+
+        if (text.includes(search)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+    
 </script>
 
 </body>
