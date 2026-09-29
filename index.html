@@ -309,79 +309,12 @@ footer {
 .email-btn:hover {
     opacity: 0.9;
 }
-/* Math Practice Game */
 
-.math-game {
-    text-align: center;
-}
-
-.game-operations {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.operation-btn {
-    background: #f1f5f9;
-    color: #222;
-    border: 2px solid #e2e8f0;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
 
 .operation-btn.active {
-    background: #2563eb;
-    color: white;
-    border-color: #2563eb;
+ ;
 }
-
-.game-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 15px 0;
-    font-size: 16px;
-}
-
-.question-box {
-    background: #f4f7fb;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 15px 0;
-}
-
-.question-box h2 {
-    margin: 0;
-    font-size: 30px;
-    color: #2563eb;
-}
-
-#gameAnswer {
-    width: 100%;
-    padding: 13px;
-    font-size: 18px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-#gameMessage {
-    font-weight: bold;
-    min-height: 24px;
-}
-
-#nextQuestionBtn {
-    background: #16a34a;
-}
-
-@media (max-width: 500px) {
-    .game-operations {
-        grid-template-columns: 1fr;
-    }
-}  
+ 
 </style>
 </head>
 
@@ -607,49 +540,7 @@ footer {
     </div>
 </div>
 </div>
- <div class="category-heading">
-    <h2>🎮 Math Practice Games</h2>
-    <p>Practice addition, subtraction, multiplication and division.</p>
-</div>
 
-<div class="card math-game" id="mathGame">
-
-    <h2>🧠 Math Challenge</h2>
-
-    <div class="game-operations">
-        <button type="button" class="operation-btn active" data-operation="+">➕ Addition</button>
-        <button type="button" class="operation-btn" data-operation="-">➖ Subtraction</button>
-        <button type="button" class="operation-btn" data-operation="*">✖️ Multiplication</button>
-        <button type="button" class="operation-btn" data-operation="/">➗ Division</button>
-    </div>
-
-    <div class="game-stats">
-        <span>🏆 Score: <b id="gameScore">0</b></span>
-        <span>🔥 Streak: <b id="gameStreak">0</b></span>
-    </div>
-
-    <div class="question-box">
-        <h2 id="gameQuestion">5 + 3 = ?</h2>
-    </div>
-
-    <input
-        type="number"
-        id="gameAnswer"
-        placeholder="Enter your answer"
-        inputmode="numeric"
-    >
-
-    <button type="button" id="checkAnswerBtn">
-        Check Answer
-    </button>
-
-    <p id="gameMessage"></p>
-
-    <button type="button" id="nextQuestionBtn" style="display:none;">
-        Next Question →
-    </button>
-</div>
-</div>
 <div class="card" id="about">
     <h2>ℹ️ About StudyCalc4U</h2>
     <p>
