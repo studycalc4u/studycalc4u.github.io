@@ -309,6 +309,79 @@ footer {
 .email-btn:hover {
     opacity: 0.9;
 }
+/* Math Practice Game */
+
+.math-game {
+    text-align: center;
+}
+
+.game-operations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.operation-btn {
+    background: #f1f5f9;
+    color: #222;
+    border: 2px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.operation-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.question-box {
+    background: #f4f7fb;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.question-box h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #2563eb;
+}
+
+#gameAnswer {
+    width: 100%;
+    padding: 13px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#gameMessage {
+    font-weight: bold;
+    min-height: 24px;
+}
+
+#nextQuestionBtn {
+    background: #16a34a;
+}
+
+@media (max-width: 500px) {
+    .game-operations {
+        grid-template-columns: 1fr;
+    }
+}  
 </style>
 </head>
 
